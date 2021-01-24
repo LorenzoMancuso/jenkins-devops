@@ -24,7 +24,7 @@ node {
             def customImage = docker.build("nodejs-app:${commit_id}")
         }
         stage('Deploy') {
-            docker.image('mysql:5').withRun('-p 8080:8080') {
+            customImage.withRun('-p 8080:8080') {
                 /* do things */
             }
         }
